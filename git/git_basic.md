@@ -19,6 +19,7 @@ https://backlog.com/git-tutorial/kr/intro/intro1_3.html
 ## init
 
 - 초기에 폴더를 git으로 관리하겠다고 선언하는 명령어
+- 
 - 현재 폴더에 .git/ 폴더가 생성된다.
 
 
