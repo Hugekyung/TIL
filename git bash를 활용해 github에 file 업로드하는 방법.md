@@ -93,6 +93,5 @@ $ git remote -v #연결된 원격저장소를 확인
 
 ```shell
 $ git push -u origin master #원격저장소에 저장/master는 branch의 이름이며, master는 remote repository를 생성하면 기본적으로 생성되는 브랜치. 브랜치는 독립적인 작업 공간을 의미. master가 아니라 다른 이름으로 하고 싶다면, 원하는 master자리에 (원하는 브런치명)을 넣으면 됨.
-$ git push origin
 ```
 
