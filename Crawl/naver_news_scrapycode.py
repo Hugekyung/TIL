@@ -31,9 +31,6 @@ class CrawlNews(scrapy.Spider):
 
     def start_requests(self):
         for start_url in self.start_urls: # 가져올 페이지를 리스트에 저장
-            # timer = round((time.time() - self.starttime) / 60)
-            # percentage = round(self.request_count / len(self.inner_id_ls) * 100, 2)
-            # print("{}분 경과, {}개 중 {}개 request 완료({}%)".format(timer, self.request_count, len(self.inner_id_ls), percentage))
             yield scrapy.Request(url=start_url, callback=self.parse, meta={"start_url" : start_url, "page_num": 1})
             time.sleep(5)
 
