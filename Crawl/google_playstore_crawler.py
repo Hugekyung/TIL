@@ -16,6 +16,7 @@ driver = webdriver.Chrome('C:/Users/haech/chromedriver.exe')
 driver.get(link)
 
 # 리뷰 결과를 최신순으로 변경
+
 # 옵션 클릭
 search_option = driver.find_element_by_xpath('//*[@id="fcxH9b"]/div[4]/c-wiz/div/div[2]/div/div/main/div/div[1]/div[2]/c-wiz/div[1]/div/div[1]/div[1]/div[3]/span')
 search_option.click()
@@ -103,6 +104,3 @@ driver.stop_client()
 driver.close()
 
 print('Done!')
-
-# ========================================================================================================================================
-# ========================================================================================================================================
