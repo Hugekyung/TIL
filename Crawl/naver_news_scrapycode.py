@@ -6,11 +6,14 @@ import pandas as pd
 import time
 import json
 import requests
+
+
 # 네이버 뉴스 '사회' 카테고리
 # 기사 수 TOP3 연합뉴스, 뉴시스, 뉴스1
 # 연합뉴스 https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&oid=001&date=20201023
 # 뉴시스 https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&oid=003&date=20201023
 # 뉴스1 https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&oid=421&date=20201023
+
 
 class CrawlNews(scrapy.Spider):
     name = "news"
@@ -24,7 +27,7 @@ class CrawlNews(scrapy.Spider):
         startdate =  datetime.strptime(start, "%Y-%m-%d")
         enddate =  datetime.strptime(end, "%Y-%m-%d")
 
-        self.start_urls= []
+        self.start_urls = []
         for cur_date in pd.date_range(startdate, enddate):
             self.start_urls.append(self.url_format.format(cur_date.strftime("%Y%m%d")))
 
@@ -64,7 +67,7 @@ class CrawlNews(scrapy.Spider):
                 title = response.css("h3#articleTitle::text").get()
                 text = ''.join(response.css("div#articleBodyContents::text").getall()).replace("\n","").strip()
 
-                # text 전처리(연합뉴스용, 다른 언론사 적용 시 다시 만들어야 돼)
+                # text 전처리(연합뉴스용)
                 temp_text = text
                 temp_text = re.sub('\(([A-Za-z가-힣]*=[가-힣]*\))','',str(temp_text)) # (서울=연합뉴스) or (AP=연합뉴스) 형식 제거
                 temp_text = re.sub('.*[가-힣] 기자 =','',temp_text) # 기자이름 제거
@@ -77,7 +80,6 @@ class CrawlNews(scrapy.Spider):
                 temp_text = re.sub('[A-Za-z]+@yna.co.kr.*','',temp_text) # 이메일 제거
                 temp_text = re.sub('[A-Za-z]+@yonhapnews.co.kr.*','',temp_text) # 이메일 제거
                 temp_text = re.sub('([0-9a-zA-Z]{1,100}\.[0-9a-zA-Z]{0,100}%?)','',temp_text) # 00.00형태 삭제
-                # temp_text = re.sub('[가-힣]{1}\.','',temp_text) # .제거
                 temp_text.strip()
                 text = temp_text
 
