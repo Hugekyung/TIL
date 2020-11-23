@@ -80,7 +80,7 @@ for review in reviews:
   if not comment:
     comment = soup.find('span', jsname='bN97Pc').text
   
-  # developer comment
+  # 개발자 답변
   # developer_comment = None
   # dc_div = soup.find('div', class_='LVQB0b')
   # if dc_div:
@@ -91,7 +91,7 @@ for review in reviews:
     'name': name,
     'ratings': ratings,
     'date': date,
-    'helpful': helpful, # 좋아요 수
+    'helpful': helpful, # 유용한 리뷰
     'comment': comment
     # 'developer_comment': developer_comment
   }, ignore_index=True)
