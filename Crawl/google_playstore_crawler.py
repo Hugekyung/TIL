@@ -4,6 +4,7 @@ import time, os
 from datetime import datetime
 import pandas as pd
 
+# 구글 플레이스토어 앱리뷰 크롤러
 # review link link
 # V4
 link = 'https://play.google.com/store/apps/details?id=com.nexon.v4kr&showAllReviews=true'
