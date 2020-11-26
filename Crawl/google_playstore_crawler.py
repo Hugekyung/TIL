@@ -31,11 +31,11 @@ print('최신순으로 변경 완료!!!')
 # os.makedirs('result', exist_ok=True) # 결과 폴더 생성
 
 for i in range(scroll_cnt):
-  print('스크롤 {} 번째 진행 중'.format(i+1))
+  print('스크롤 {} 번째 진행 중...'.format(i+1))
   # scroll to bottom
-  driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+  driver.execute_script('window.scrollTo(0, document.body.scrollHeight);') # 맨 아래로 스크롤
   time.sleep(1)
-  driver.execute_script('window.scrollTo(0, document.body.scrollHeight-1200);')
+  driver.execute_script('window.scrollTo(0, document.body.scrollHeight-1200);') # 위로 살짝 스크롤(더보기 버튼이 화면에 있어야 누를 수 있다)
   time.sleep(5)
 
   # click 'Load more' button, if exists
