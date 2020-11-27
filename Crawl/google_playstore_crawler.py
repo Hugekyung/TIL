@@ -4,7 +4,7 @@ import time, os
 from datetime import datetime
 import pandas as pd
 
-# 구글 플레이스토어 앱리뷰 크롤러
+# 구글 플레이스토어 앱리뷰 크롤러(셀레니움+뷰티풀숩)
 # review link link
 # V4
 link = 'https://play.google.com/store/apps/details?id=com.nexon.v4kr&showAllReviews=true'
@@ -97,8 +97,7 @@ for review in reviews:
     # 'developer_comment': developer_comment
   }, ignore_index=True)
 
-# finally save the dataframe into csv file
-# filename = datetime.now().strftime('result/%Y-%m-%d_%H-%M-%S.csv')
+# csv파일로 저장
 filename = 'V4.csv'
 df.to_csv(filename, encoding='utf-8-sig', index=False)
 driver.stop_client()
