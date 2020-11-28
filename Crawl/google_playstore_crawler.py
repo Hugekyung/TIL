@@ -55,7 +55,7 @@ print('Writing the data...')
 # create empty dataframe to store data
 df = pd.DataFrame(columns=['name', 'ratings', 'date', 'helpful', 'comment'])
 
-# get review data
+# get review data(beautifulsoup 사용)
 for review in reviews:
   # parse string to html using bs4
   soup = BeautifulSoup(review.get_attribute('innerHTML'), 'html.parser')
@@ -82,10 +82,10 @@ for review in reviews:
     comment = soup.find('span', jsname='bN97Pc').text
   
   # 개발자 답변
-  # developer_comment = None
-  # dc_div = soup.find('div', class_='LVQB0b')
-  # if dc_div:
-  #   developer_comment = dc_div.text.replace('\n', ' ')
+  developer_comment = None
+  dc_div = soup.find('div', class_='LVQB0b')
+  if dc_div:
+    developer_comment = dc_div.text.replace('\n', ' ')
   
   # append to dataframe
   df = df.append({
@@ -94,7 +94,7 @@ for review in reviews:
     'date': date,
     'helpful': helpful, # 유용한 리뷰
     'comment': comment
-    # 'developer_comment': developer_comment
+    'developer_comment': developer_comment
   }, ignore_index=True)
 
 # csv파일로 저장
@@ -102,5 +102,4 @@ filename = 'V4.csv'
 df.to_csv(filename, encoding='utf-8-sig', index=False)
 driver.stop_client()
 driver.close()
-
 print('Done!')
