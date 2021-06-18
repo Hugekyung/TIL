@@ -26,8 +26,19 @@ class Pipeline(object):
                 item['insta_id'], item['username'], item['follower'], item['post_id'], item['comments_count'], item['likes_count'], item['post_date']
                 )
 
-            self.cursor.execute(query)
-            self.connection.commit()
+            # 해당 데이터가 db안에 없으면 insert하고, 있으면 새로운 데이터로 update를 하는 구문.
+            # INSERT INTO 테이블 (컬럼1, 컬럼2, 컬럼3, ...) 
+            # VALUES (컬럼1 데이터, 컬럼2 데이터, 컬럼3 데이터, ...) 
+            # ON DUPLICATE KEY UPDATE 컬럼1={컬럼1 데이터}, 컬럼2={컬럼2 데이터}, 컬럼3={컬럼3 데이터}
+            query_post = """INSERT INTO post (unique_id, post_id, comments_count, likes_count, post_date) VALUES ("{}", "{}", "{}", "{}", "{}") ON DUPLICATE KEY UPDATE
+                                    comments_count="{}", likes_count="{}"
+                                """.format(
+                item['unique_id'], item['post_id'], item['comments_count'], item['likes_count'], item['post_date'], 
+                item['comments_count'], item['likes_count']
+                )
+
+            self.cursor.execute(query) # 쿼리 실행
+            self.connection.commit() # db 커밋
             print(f"{item['insta_id']}의 데이터가 정상적으로 INSERT 되었습니다.")
         except MySQLdb.Error as e:
             print("Error {}: {}".format(e.args[0], e.args[1]))
