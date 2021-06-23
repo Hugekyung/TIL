@@ -22,7 +22,6 @@ class InstaSpider(scrapy.Spider):
 
     user_names = list(pd.read_csv('/home/ubuntu/workspace/sooing/influencer_re.csv')['username'])
 
-    # 내일 오전 돌려보고 돌아가는지 확인 필요
     cookies = {
         'csrftoken':'cQ84ypAxls5XqGEv9PLUpJfuqfcJdx6C',
         'ds_user_id':'1565063471',
