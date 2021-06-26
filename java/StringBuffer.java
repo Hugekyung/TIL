@@ -24,4 +24,22 @@ public class Test {
     }
 }
 
->> hello jump to java
+
+// insert: 특정 위치에 문자 삽입
+public class Test {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("jump to java");
+        sb.insert(0, "hello ");
+        System.out.println(sb.toString());
+    }
+}
+
+// substring: 문자 추출
+public class Test {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Hello jump to java");
+        System.out.println(sb.substring(0, 4));
+    }
+}
