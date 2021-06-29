@@ -26,3 +26,36 @@ public class ArrayListTest {
         System.out.println(colors);
     }
 }
+
+// 반복문으로 arraylist 출력하기
+public class ArrayListTest {
+    public static void main(String[] args) {
+        ArrayList<String> colors = new ArrayList<>(Arrays.asList("Black", "White", "Green", "Red"));
+        
+				// for-each loop
+        for (String color : colors) {
+            System.out.print(color + "  ");
+        }
+        System.out.println();
+
+        // for loop
+        for (int i = 0; i < colors.size(); ++i) {
+            System.out.print(colors.get(i) + "  ");
+        }
+        System.out.println();
+
+        // using iterator
+        Iterator<String> iterator = colors.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + "  ");
+        }
+        System.out.println();
+
+        // using listIterator
+        ListIterator<String> listIterator = colors.listIterator(colors.size());
+        while (listIterator.hasPrevious()) {
+            System.out.print(listIterator.previous() + "  ");
+        }
+        System.out.println();
+    }
+}
