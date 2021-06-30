@@ -32,7 +32,7 @@ public class ArrayListTest {
     public static void main(String[] args) {
         ArrayList<String> colors = new ArrayList<>(Arrays.asList("Black", "White", "Green", "Red"));
         
-				// for-each loop
+        // for-each loop
         for (String color : colors) {
             System.out.print(color + "  ");
         }
@@ -57,5 +57,21 @@ public class ArrayListTest {
             System.out.print(listIterator.previous() + "  ");
         }
         System.out.println();
+    }
+}
+
+
+// 값이 존재하는지 contains(), 어느 위치에 존재하는지 확인 indexOf()
+public class ArrayListTest {
+    public static void main(String[] args) {
+        ArrayList<String> colors = new ArrayList<>(Arrays.asList("Black", "White", "Green", "Red"));
+        boolean contains = colors.contains("Black");
+        System.out.println(contains);
+
+        int index = colors.indexOf("Blue");
+        System.out.println(index);
+
+        index = colors.indexOf("Red");
+        System.out.println(index);
     }
 }
